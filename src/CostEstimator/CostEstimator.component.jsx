@@ -4,12 +4,14 @@ import DestinationList from "./DestinationList.component";
 import FeatureChooser from "./FeatureChooser.component";
 import {useState} from 'react';
 import ProductFooter from "../Common/ProductFooter.component";
+import InitialOptions from "./InitialOptions.component";
 
 function CostEstimator(props) {
     let [total, setTotal] = useState(0);
     return (
         <>
             <ProductNavigation moduleName="Cost Estimator"/>
+                <InitialOptions/>
                 <HStack alignItems={'flex-start'}  align={'flex-start'}>
                     <FeatureChooser setTotal={setTotal} total={total}/>
                     <DestinationList setTotal={setTotal} total={total}/>

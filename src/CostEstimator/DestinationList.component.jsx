@@ -19,7 +19,14 @@ function DestinationList(props) {
                 'Mother Teresa Missionaries of Charity',
                 'Agra Art Gallery'
             ],
-            visitors : '1,0000'
+            visitors : '1,0000',
+            nearestLocations: [
+                'New Delhi',
+                'Jaipur',
+                'Udaipur',
+                'Kota',
+                'Gurgaon'
+            ]
         },
         {
             id : 2,
@@ -116,71 +123,28 @@ function DestinationList(props) {
                     textAlign={'left'}
                     p={'0'}
                 >
-                    
+                    <Stack>
+                        <Text>
+                            <Text color={'gray.600'} fontSize={'12px'}>
+                                Nearest Locations : 
+                            </Text>
+                            {currentDestination.nearestLocations && currentDestination.nearestLocations.length > 0 && currentDestination.nearestLocations.join(', ') }
+                        </Text>
+                    </Stack>
                     <Stack
                         style={{
-                            'height':'300px',
+                            'height':'200px',
                             'backgroundImage':`url(/${currentDestination.imagePath})`,
                             'backgroundPosition':'60% 40%',
                             'backgroundSize':'100%',
                             'borderRadius':'5px'
                         }}
                     />
-                    <VStack>
-                    
-                    
-                    <Stack
-                        w={'50vh'}
-                        bg={'blue.900'}
-                        p={'4'}
-                        marginTop={'-20%'}
-                        opacity={'90%'}
-                        borderRadius={'5px'}
-                        color={'white'}
-                        boxShadow={`0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-                        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-                        0 12.5px 10px rgba(0, 0, 0, 0.06),
-                        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-                        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-                        0 100px 80px rgba(0, 0, 0, 0.12)`}
-                    >
-                        <Text fontSize={'13px'}>
-                            BASE FARE AMOUNT
-                            <Text color={'blue.100'} fontSize={'10px'}>
-                                Includes minimum charge for the Tour package, consists of
-                                airline fares, baggage costs, fee to Embassy, commission to 
-                                the agents etc.
-                            </Text>
-                        </Text>
-                        <Text fontSize={'25px'}>$ {currentDestination.baseCost}</Text>
-                        {total > 0 && 
-                            <>
-                                <Text fontSize={'13px'}>
-                                    VAS Amount
-                                    <Text color={'blue.100'} fontSize={'10px'}>
-                                        Refer to the left most section to view the
-                                        breakdown of the VAS charges.
-                                    </Text>
-                                </Text>
-                                
-                                <Text fontSize={'25px'}>$ {total.toFixed(2)}</Text>
-
-                                <Text fontSize={'13px'}>
-                                    Total Amount
-                                    <Text color={'blue.100'} fontSize={'10px'}>
-                                        Base amount + VAS charges
-                                    </Text>
-                                </Text>
-                                
-                                <Text fontSize={'25px'}>$ {total + currentDestination.baseCost}</Text>
-                            </>
-                        }
-                    </Stack>
-                    </VStack>
                     <HStack>
+                    <HStack>
+                        
                         <Stack
-                            textAlign={'center'}
-                            bg='white'
+                            
                             p={'10'}
                         >
                             <Heading
@@ -192,11 +156,6 @@ function DestinationList(props) {
                         <Text>
                             {currentDestination.country}
                         </Text>
-                        </Stack>
-                        <Stack
-                            
-                            p={'10'}
-                        >
                             <Text fontSize={'14px'}>
                                 <Text fontSize='12px' color={'gray.700'}>
                                     Places to visit : 
@@ -219,12 +178,70 @@ function DestinationList(props) {
                         
                         
                     </HStack>
+                    
+                    <Stack
+                        w={'55vh'}
+                        bg={'blue.900'}
+                        p={'4'}
+                        marginTop={'-20%'}
+                        opacity={'90%'}
+                        borderRadius={'5px'}
+                        color={'white'}
+                        boxShadow={`0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                        0 12.5px 10px rgba(0, 0, 0, 0.06),
+                        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                        0 100px 80px rgba(0, 0, 0, 0.12)`}
+                    >
+                        <Text fontSize={'13px'}>
+                            BASE FARE AMOUNT
+                            <Text color={'blue.100'} fontSize={'10px'}>
+                                Includes minimum charge for the Tour package, consists of
+                                airline fares, baggage costs, fee to Embassy, commission to 
+                                the agents etc.
+                            </Text>
+                        </Text>
+                        
+                        <Text fontSize={'25px'}>$ {currentDestination.baseCost}</Text>
+                        
+                        {total > 0 && 
+                            <>
+                            
+                                <hr/>   
+                                <Text fontSize={'13px'}>
+                                    VAS Amount
+                                    <Text color={'blue.100'} fontSize={'10px'}>
+                                        Refer to the left most section to view the
+                                        breakdown of the VAS charges.
+                                    </Text>
+                                </Text>
+                                
+                                <Text fontSize={'25px'}>$ {total.toFixed(2)}</Text>
+                                <hr/>
+
+                                <Text fontSize={'13px'}>
+                                    Total Amount
+                                    <Text color={'blue.100'} fontSize={'10px'}>
+                                        Base amount + VAS charges
+                                    </Text>
+                                </Text>
+                                
+                                <Text fontSize={'25px'}>$ {total + currentDestination.baseCost}</Text>
+                            </>
+                        }
+                    </Stack>
+                    
+                    </HStack>
+                    
 
                     
                     
                     
                 </Stack>
-                <Stack>
+                <Stack
+                    p={'3'}
+                >
 
                 {destinations.map((destination) => {
                     return (

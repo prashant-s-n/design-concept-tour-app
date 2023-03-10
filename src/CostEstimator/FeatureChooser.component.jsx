@@ -1,7 +1,8 @@
-import { Stack, Container, Box, VStack, Image, HStack, Text, Icon, Flex, Spacer } from "@chakra-ui/react";
+import { Stack, Heading,    Container, Box, VStack, Image, HStack, Text, Icon, Flex, Spacer, Center } from "@chakra-ui/react";
 import { FcApproval, FcAutomotive, FcMoneyTransfer } from 'react-icons/fc';
 import { AiFillPhone, AiOutlineCar, AiOutlineCoffee, AiOutlineFileProtect, AiOutlineFire, AiOutlineMobile, AiOutlinePhone, AiOutlineSmile, AiOutlineSolution, AiOutlineUsergroupAdd, AiOutlineWifi, AiOutlineZhihu } from 'react-icons/ai'
 import { useState } from "react";
+import { BsEmojiSmile } from "react-icons/bs";
 function FeatureChooser(props) {
     let total = props.total;
     let setTotal = props.setTotal;
@@ -121,6 +122,21 @@ function FeatureChooser(props) {
             <VStack
             p={'2'}
              >
+                <Stack
+                    p={'3'}
+                    bg={'gray.100'}
+                    borderRadius={'5px'}
+                    textAlign={'center'}
+                >
+                    <Text fontSize={'25px'} fontWeight={'600'} lineHeight={'1'}>
+                        <Center><BsEmojiSmile fontSize={'40px'}/></Center><br/>
+                        Select Value Added Services<br/><br/>
+                        <Text fontSize={'14px'} fontWeight={'400'}>
+                            Decide your own customizations, no more overcharges
+                            for unnecessary services.
+                        </Text>
+                    </Text>
+                </Stack>
                 <HStack
                     marginTop={'10px'}
                     gap={'1'}
@@ -177,12 +193,12 @@ function FeatureChooser(props) {
             </VStack>
             <br/>
             <VStack>
-                <FcMoneyTransfer
+                {/* <FcMoneyTransfer
                     fontSize={'30px'}
                 />
                 <Text>
                     Total : $ {total}
-                </Text>
+                </Text> */}
                 {selectedValueAddedServices.map((vas) => {
                     return (
                         <Box w={'100%'} bg={'gray.100'} wrap={'nowrap'}
